@@ -25,8 +25,10 @@ export default async function handler(req, res) {
     });
 
     return res.status(200).json({
-      stores: response.data.valueRanges[0].values || [],
-      facilities: response.data.valueRanges[1].values || [],
+      items: {
+        stores: response.data.valueRanges[0].values || [],
+        facilities: response.data.valueRanges[1].values || []
+      }
     });
   } catch (error) {
     return res.status(500).json({ error: error.message });
