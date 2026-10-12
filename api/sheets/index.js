@@ -13,7 +13,6 @@ export default async function handler(req, res) {
       'http://localhost' // Redirect URI
     );
     
-    console.log(2);
     oauth2Client.setCredentials({
       refresh_token: refreshToken,
     });
@@ -26,8 +25,8 @@ export default async function handler(req, res) {
     });
 
     return res.status(200).json({
-      katastimata: response.data.valueRanges[0].values || [],
-      egkatastaseis: response.data.valueRanges[1].values || [],
+      stores: response.data.valueRanges[0].values || [],
+      facilities: response.data.valueRanges[1].values || [],
     });
   } catch (error) {
     return res.status(500).json({ error: error.message });
