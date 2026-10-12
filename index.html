@@ -2,31 +2,19 @@
 <html lang="el">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Καταστήματα & εγκαταστάσεις</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F2F3F0; --surface:#FFFFFF; --surface-2:#F7F8F6; --ink:#18212B; --muted:#5B6570; --line:#D8DCD6;
+  --bg:#FFFFFF; --surface:#FFFFFF; --surface-2:#F5F6F4; --ink:#18212B; --muted:#5B6570; --line:#E1E4DF;
   --accent:#A92A1F; --accent-soft:#F5E2DF; --ok:#2C7A4B; --future:#9A5D08; --focus:#1F5FBF;
-  --row-hover:#F4F6F3; --radius-s:4px; --radius-m:8px;
+  --row-hover:#F7F8F6; --radius-s:4px; --radius-m:8px;
   color-scheme:light;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#11161C; --surface:#182029; --surface-2:#1D262F; --ink:#E7EBEE; --muted:#9BA5AF; --line:#2B3540;
-    --accent:#E46B5E; --accent-soft:#3A2220; --ok:#62C08A; --future:#E2A84F; --focus:#7FA8F0; --row-hover:#1E2832;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#11161C; --surface:#182029; --surface-2:#1D262F; --ink:#E7EBEE; --muted:#9BA5AF; --line:#2B3540;
-  --accent:#E46B5E; --accent-soft:#3A2220; --ok:#62C08A; --future:#E2A84F; --focus:#7FA8F0; --row-hover:#1E2832;
-  color-scheme:dark;
 }
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:border-box}
@@ -72,7 +60,7 @@ h1{margin:0;font-size:clamp(24px,3.2vw,32px);font-weight:650;letter-spacing:-.01
 .legend button[aria-pressed="true"]{font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--c);text-decoration-thickness:2px}
 
 /* toolbar */
-.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-m);padding:10px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:14px 0 0;border-top:1px solid var(--line)}
 .search{flex:1 1 260px;display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:var(--radius-s);padding:0 10px;background:var(--surface-2)}
 .search input{border:0;background:none;padding:9px 0;width:100%;outline:none}
 .search:focus-within{outline:2px solid var(--focus);outline-offset:1px}
@@ -110,7 +98,7 @@ details.facet.active>summary{border-color:var(--accent);background:var(--accent-
 /* table */
 .table-wrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-m);overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:14px}
-thead th{position:sticky;top:0;background:var(--surface-2);text-align:left;font-weight:600;border-bottom:1px solid var(--line);padding:0;white-space:nowrap;z-index:2}
+thead th{box-shadow:inset 0 -2px 0 var(--ink);position:sticky;top:0;background:var(--surface);text-align:left;font-weight:600;border-bottom:1px solid var(--line);padding:0;white-space:nowrap;z-index:2}
 th button{all:unset;cursor:pointer;display:flex;align-items:center;gap:6px;padding:10px 12px;width:100%;box-sizing:border-box}
 th button:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
 th.num button{justify-content:flex-end}
@@ -168,7 +156,7 @@ tr.detail td{background:var(--row-hover);padding:4px 12px 18px}
 </head>
 <body>
 <div class="wrap">
-  <header class="top">
+  <!-- <header class="top">
     <div>
       <h1>Καταστήματα & εγκαταστάσεις</h1>
       <p class="sub" id="source">Φόρτωση δεδομένων…</p>
@@ -184,7 +172,7 @@ tr.detail td{background:var(--row-hover);padding:4px 12px 18px}
       </label>
       <input type="file" id="file" accept=".json,application/json" class="sr">
     </div>
-  </header>
+  </header> -->
 
   <div id="banner"></div>
 
@@ -550,7 +538,7 @@ document.addEventListener("click", e=>{
     const v=V(), id=row.dataset.id;
     v.open.has(id)?v.open.delete(id):v.open.add(id);
     render();
-    const again=document.querySelector(`tr.row[data-id="${CSS.escape(id)}"] .nm`); if(again) again.focus({preventScroll:true});
+    if(e.detail===0){ const again=document.querySelector(`tr.row[data-id="${CSS.escape(id)}"] .nm`); if(again) again.focus({preventScroll:true}); }
   }
 });
 function toggle(k,x){
