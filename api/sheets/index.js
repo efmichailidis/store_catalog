@@ -3,14 +3,18 @@ import { google } from 'googleapis';
 export default async function handler(req, res) {
   try {
 
+    const refreshToken = process.env.GOOGLE_REFRESH_TOKEN?.trim();
+    const clientId = process.env.GOOGLE_CLIENT_ID?.trim();
+    const clientSecret = process.env.GOOGLE_CLIENT_SECRET?.trim();
+    
     const oauth2Client = new google.auth.OAuth2(
-      process.env.GOOGLE_CLIENT_ID,
-      process.env.GOOGLE_CLIENT_SECRET,
+      clientId,
+      clientSecret,
       'http://localhost' // Redirect URI
     );
 
     oauth2Client.setCredentials({
-      refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+      refresh_token: refreshToken,
     });
 
     const sheets = google.sheets({ version: 'v4', auth: oauth2Client });
