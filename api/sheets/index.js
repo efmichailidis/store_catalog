@@ -7,6 +7,10 @@ export default async function handler(req, res) {
     const clientId = process.env.GOOGLE_CLIENT_ID?.trim();
     const clientSecret = process.env.GOOGLE_CLIENT_SECRET?.trim();
     console.log(1);
+
+    console.log('refreshToken: '+ refreshToken);
+    console.log('clientId: '+ clientId);
+    console.log('clientSecret: '+ clientSecret);
     
     const oauth2Client = new google.auth.OAuth2(
       clientId,
