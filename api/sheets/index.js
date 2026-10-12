@@ -2,6 +2,7 @@ import { google } from 'googleapis';
 
 export async function GET(request) {
   try {
+    
     // 1. Ρύθμιση OAuth Client από τα Environment Variables του Vercel
     const oauth2Client = new google.auth.OAuth2(
       process.env.GOOGLE_CLIENT_ID,
@@ -10,8 +11,12 @@ export async function GET(request) {
     );
 
     // 2. Ορισμός των Tokens (κυρίως του Refresh Token)
+    const refresh_token = process.env.GOOGLE_REFRESH_TOKEN
+      ? process.env.GOOGLE_REFRESH_TOKEN.replace(/\\n/g, '\n')
+      : undefined;
+    
     oauth2Client.setCredentials({
-      refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+      refresh_token: refresh_token,
     });
 
     // 3. Αρχικοποίηση Google Sheets API
