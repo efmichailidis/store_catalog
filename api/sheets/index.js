@@ -2,6 +2,9 @@ import { google } from 'googleapis';
 
 export default async function handler(req, res) {
   try {
+    console.log("Client ID loaded:", process.env.GOOGLE_CLIENT_ID ? process.env.GOOGLE_CLIENT_ID.substring(0, 10) + "..." : "MISSING");
+    console.log("Refresh Token loaded:", process.env.GOOGLE_REFRESH_TOKEN ? process.env.GOOGLE_REFRESH_TOKEN.substring(0, 5) + "..." : "MISSING");
+    
     const oauth2Client = new google.auth.OAuth2(
       process.env.GOOGLE_CLIENT_ID,
       process.env.GOOGLE_CLIENT_SECRET,
