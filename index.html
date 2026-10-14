@@ -71,6 +71,18 @@
     </table>
   </div>
 </div>
+  <dialog id="mapdlg" aria-labelledby="mapdlg-t">
+  <h2 id="mapdlg-t">Ο χάρτης δεν άνοιξε</h2>
+  <p class="muted">Η σελίδα που φιλοξενεί αυτή τη λίστα δεν επιτρέπει το άνοιγμα νέων καρτελών, και το Google Maps δεν ανοίγει μέσα σε πλαίσιο. Αντιγράψτε τον σύνδεσμο ή τη διεύθυνση και ανοίξτε τα στον browser.</p>
+  <p class="dlg-addr" id="mapdlg-addr"></p>
+  <input id="mapdlg-url" readonly aria-label="Σύνδεσμος Google Maps">
+  <div class="dlg-actions">
+    <button class="btn" type="button" data-copy="url">Αντιγραφή συνδέσμου</button>
+    <button class="btn" type="button" data-copy="addr">Αντιγραφή διεύθυνσης</button>
+    <button class="btn link" type="button" data-close>Κλείσιμο</button>
+  </div>
+  <p class="muted dlg-status" id="mapdlg-status" aria-live="polite"></p>
+</dialog>
 <div class="drop" id="drop">Αφήστε εδώ το αρχείο JSON</div>
 <script src="/js/app.js"></script>
 </body>
