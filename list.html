@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Καταστήματα & εγκαταστάσεις</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Καταστήματα & εγκαταστάσεις</h1>
+      <p class="sub" id="source">Φόρτωση δεδομένων…</p>
+    </div>
+    <div class="actions">
+      <button class="btn" id="refresh" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5"/></svg>
+        Ανανέωση
+      </button>
+      <label class="btn" for="file" title="Εφεδρικά: φόρτωση από αρχείο αν το API δεν απαντά">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>
+        Από αρχείο
+      </label>
+      <input type="file" id="file" accept=".json,application/json" class="sr">
+    </div>
+  </header>
+
+  <div id="banner"></div>
+
+  <div class="tabs" role="tablist" id="tabs"></div>
+
+  <section class="mix" id="mix" aria-label="Κατανομή ανά τύπο"></section>
+
+  <div class="toolbar" id="toolbar">
+    <label class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <span class="sr">Αναζήτηση</span>
+      <input id="q" type="search" placeholder="Κωδικός, ονομασία, διεύθυνση, ΤΚ, πόλη ή email" autocomplete="off">
+    </label>
+    <span id="facets" style="display:contents"></span>
+    <details class="facet" id="areaFacet">
+      <summary>Επιφάνεια</summary>
+      <div class="menu">
+        <div class="range">
+          <input id="amin" type="number" min="0" inputmode="numeric" placeholder="Από τ.μ." aria-label="Ελάχιστη επιφάνεια">
+          <span class="muted">έως</span>
+          <input id="amax" type="number" min="0" inputmode="numeric" placeholder="Έως τ.μ." aria-label="Μέγιστη επιφάνεια">
+        </div>
+        <label><input type="checkbox" id="anull"><span class="lbl">Μόνο χωρίς καταχωρημένη επιφάνεια</span></label>
+      </div>
+    </details>
+    <label class="sr" for="sortsel">Ταξινόμηση</label>
+    <select id="sortsel" class="sortsel"></select>
+  </div>
+  <div class="chips" id="chips"></div>
+
+  <div class="summary">
+    <div id="count" aria-live="polite"></div>
+    <details class="note" id="note"></details>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead id="thead"></thead>
+      <tbody id="tbody"><tr><td class="loading">Φόρτωση δεδομένων από το API…</td></tr></tbody>
+    </table>
+  </div>
+</div>
+<div class="drop" id="drop">Αφήστε εδώ το αρχείο JSON</div>
+<script src="/js/app.js"></script>
+</body>
+</html>
