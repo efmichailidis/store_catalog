@@ -255,7 +255,7 @@ const blank = `<span class="blank">—</span>`;
 function mapsUrl(it){
   const parts = [it.address, [it.tk,it.city].filter(Boolean).join(" ")].filter(Boolean);
   if(!parts.length) return "";
-  return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(parts.join(", ") + ", Ελλάδα");
+  return "https://maps.google.com/?q=" + encodeURIComponent(parts.join(", ") + ", Ελλάδα");
 }
 function mapLink(it){
   const u = mapsUrl(it);
