@@ -396,3 +396,10 @@ $("refresh").addEventListener("click", loadFromApi);
 document.addEventListener("click", e=>{ if(e.target.closest("[data-retry]")) loadFromApi(); });
 loadFromApi();
 })();
+
+if (window.self === window.top) {
+  // Η σελίδα άνοιξε απευθείας (εκτός iframe)
+  document.body.innerHTML = '<h1>403 Forbidden</h1><p>H πρόσβαση επιτρέπεται μόνο μέσα από την εφαρμογή Staffbase.</p>';
+  // Προαιρετικά: Ανακατεύθυνση στο Staffbase
+  // window.location.href = 'https://your-company.staffbase.com';
+}
