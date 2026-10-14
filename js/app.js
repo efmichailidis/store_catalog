@@ -287,7 +287,7 @@ function renderBody(list){
   $("tbody").innerHTML = list.map(it=>{
     const open = v.open.has(it.id);
     const st = it.status==="Σε λειτουργία" ? "ok" : it.status==="Μελλοντικό" ? "future" : "";
-    if (st == 'ok') {
+    // if (st == 'ok') {
       const row = `<tr class="row ${open?"open":""}" data-id="${it.id}">
         <td class="code">${txt(it.code)}</td>
         <td class="name"><button class="nm" aria-expanded="${open}">${txt(it.name)}</button></td>
@@ -309,7 +309,7 @@ function renderBody(list){
       ];
       if(d.has("region")) items.push(["Περιφέρεια", txt(it.region)]);
       if(d.has("loctype")) items.push(["Τύπος τοποθεσίας", txt(it.loctype)]);
-    }
+    // }
     return row + `<tr class="detail"><td colspan="${COLUMNS.length+1}"><dl class="dgrid">${items.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join("")}</dl></td></tr>`;
       }).join("");
 }
