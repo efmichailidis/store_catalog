@@ -287,29 +287,31 @@ function renderBody(list){
   $("tbody").innerHTML = list.map(it=>{
     const open = v.open.has(it.id);
     const st = it.status==="Σε λειτουργία" ? "ok" : it.status==="Μελλοντικό" ? "future" : "";
-    const row = `<tr class="row ${open?"open":""}" data-id="${it.id}">
-      <td class="code">${txt(it.code)}</td>
-      <td class="name"><button class="nm" aria-expanded="${open}">${txt(it.name)}</button></td>
-      <td data-label="${esc(tl)}">${it.type?`<span class="tag" style="--c:${d.colors[it.type]}">${esc(it.type)}</span>`:blank}</td>
-      <td data-label="Τοποθεσία"><span>${txt(it.address)}<span class="second">${esc([it.tk,it.city].filter(Boolean).join(" "))||""}</span></span></td>
-      <td class="map" data-label="Χάρτης">${mapLink(it)}</td>
-      <td data-label="Γεωγρ. περιφέρεια">${txt(it.geo)}</td>
-      <td data-label="Δίκτυο"><span>${txt(it.network)}${it.region?`<span class="second">${esc(it.region)}</span>`:""}</span></td>
-      <td data-label="Κατάσταση">${it.status?`<span class="status ${st}">${esc(it.status)}</span>`:blank}</td>
-      <td class="num" data-label="Επιφάνεια">${it.area!=null?nf.format(it.area):blank}</td>
-      <td class="chev muted" aria-hidden="true">${open?"▾":"▸"}</td>
-    </tr>`;
-    if(!open) return row;
-    const items = [
-      ["Περιγραφή ακινήτου", txt(it.desc)],
-      ["Email", it.emails.length ? it.emails.map(e=>`<a href="mailto:${esc(e)}">${esc(e)}</a>`).join("<br>") : blank],
-      ["Διεύθυνση", txt([it.address,[it.tk,it.city].filter(Boolean).join(" ")].filter(Boolean).join(", "))],
-      ["Επιφάνεια όπως καταχωρήθηκε", txt(it.areaRaw)]
-    ];
-    if(d.has("region")) items.push(["Περιφέρεια", txt(it.region)]);
-    if(d.has("loctype")) items.push(["Τύπος τοποθεσίας", txt(it.loctype)]);
-    return row + `<tr class="detail"><td colspan="${COLUMNS.length+1}"><dl class="dgrid">${items.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join("")}</dl></td></tr>`;
-  }).join("");
+    if (st == 'ok') {
+      const row = `<tr class="row ${open?"open":""}" data-id="${it.id}">
+        <td class="code">${txt(it.code)}</td>
+        <td class="name"><button class="nm" aria-expanded="${open}">${txt(it.name)}</button></td>
+        <td data-label="${esc(tl)}">${it.type?`<span class="tag" style="--c:${d.colors[it.type]}">${esc(it.type)}</span>`:blank}</td>
+        <td data-label="Τοποθεσία"><span>${txt(it.address)}<span class="second">${esc([it.tk,it.city].filter(Boolean).join(" "))||""}</span></span></td>
+        <td class="map" data-label="Χάρτης">${mapLink(it)}</td>
+        <td data-label="Γεωγρ. περιφέρεια">${txt(it.geo)}</td>
+        <td data-label="Δίκτυο"><span>${txt(it.network)}${it.region?`<span class="second">${esc(it.region)}</span>`:""}</span></td>
+        <td data-label="Κατάσταση">${it.status?`<span class="status ${st}">${esc(it.status)}</span>`:blank}</td>
+        <td class="num" data-label="Επιφάνεια">${it.area!=null?nf.format(it.area):blank}</td>
+        <td class="chev muted" aria-hidden="true">${open?"▾":"▸"}</td>
+      </tr>`;
+      if(!open) return row;
+      const items = [
+        ["Περιγραφή ακινήτου", txt(it.desc)],
+        ["Email", it.emails.length ? it.emails.map(e=>`<a href="mailto:${esc(e)}">${esc(e)}</a>`).join("<br>") : blank],
+        ["Διεύθυνση", txt([it.address,[it.tk,it.city].filter(Boolean).join(" ")].filter(Boolean).join(", "))],
+        ["Επιφάνεια όπως καταχωρήθηκε", txt(it.areaRaw)]
+      ];
+      if(d.has("region")) items.push(["Περιφέρεια", txt(it.region)]);
+      if(d.has("loctype")) items.push(["Τύπος τοποθεσίας", txt(it.loctype)]);
+      return row + `<tr class="detail"><td colspan="${COLUMNS.length+1}"><dl class="dgrid">${items.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join("")}</dl></td></tr>`;
+      }).join("");
+    }
 }
 
 /* ---------- events ---------- */
