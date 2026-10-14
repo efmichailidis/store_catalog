@@ -369,20 +369,20 @@ $("sortsel").addEventListener("change", e=>{ if(!D()) return; const [k,d]=e.targ
 function banner(msg, err){
   $("banner").innerHTML = `<div class="banner ${err?"err":""}" role="status"><span>${msg}</span><button class="btn link" type="button" onclick="this.closest('.banner').remove()">Απόκρυψη</button></div>`;
 }
-function readFile(f){
-  if(!f) return;
-  const r=new FileReader();
-  r.onload=()=>{
-    try{
-      load(JSON.parse(r.result), "Δεδομένα από το αρχείο " + f.name, true);
-      const d=state.data;
-      banner(`Φορτώθηκε το ${esc(f.name)}: ${d.stores?d.stores.items.length+" καταστήματα":""}${d.stores&&d.facilities?" και ":""}${d.facilities?d.facilities.items.length+" εγκαταστάσεις":""}. Με «Ανανέωση» επιστρέφετε στα δεδομένα του API.`);
-    }catch(err){ banner(`Δεν φορτώθηκε το ${esc(f.name)}. ${esc(err.message||"Μη έγκυρο JSON.")}`, true); }
-  };
-  r.onerror=()=>banner(`Δεν διαβάστηκε το ${esc(f.name)}.`, true);
-  r.readAsText(f,"utf-8");
-}
-$("file").addEventListener("change", e=>{ readFile(e.target.files[0]); e.target.value=""; });
+// function readFile(f){
+//   if(!f) return;
+//   const r=new FileReader();
+//   r.onload=()=>{
+//     try{
+//       load(JSON.parse(r.result), "Δεδομένα από το αρχείο " + f.name, true);
+//       const d=state.data;
+//       banner(`Φορτώθηκε το ${esc(f.name)}: ${d.stores?d.stores.items.length+" καταστήματα":""}${d.stores&&d.facilities?" και ":""}${d.facilities?d.facilities.items.length+" εγκαταστάσεις":""}. Με «Ανανέωση» επιστρέφετε στα δεδομένα του API.`);
+//     }catch(err){ banner(`Δεν φορτώθηκε το ${esc(f.name)}. ${esc(err.message||"Μη έγκυρο JSON.")}`, true); }
+//   };
+//   r.onerror=()=>banner(`Δεν διαβάστηκε το ${esc(f.name)}.`, true);
+//   r.readAsText(f,"utf-8");
+// }
+// $("file").addEventListener("change", e=>{ readFile(e.target.files[0]); e.target.value=""; });
 let dragDepth=0;
 window.addEventListener("dragenter", e=>{ if([...(e.dataTransfer?.types||[])].includes("Files")){ dragDepth++; $("drop").classList.add("on"); } });
 window.addEventListener("dragleave", ()=>{ if(--dragDepth<=0){ dragDepth=0; $("drop").classList.remove("on"); } });
