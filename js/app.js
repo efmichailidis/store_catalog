@@ -309,9 +309,9 @@ function renderBody(list){
       ];
       if(d.has("region")) items.push(["Περιφέρεια", txt(it.region)]);
       if(d.has("loctype")) items.push(["Τύπος τοποθεσίας", txt(it.loctype)]);
-      return row + `<tr class="detail"><td colspan="${COLUMNS.length+1}"><dl class="dgrid">${items.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join("")}</dl></td></tr>`;
-      }).join("");
     }
+    return row + `<tr class="detail"><td colspan="${COLUMNS.length+1}"><dl class="dgrid">${items.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join("")}</dl></td></tr>`;
+      }).join("");
 }
 
 /* ---------- events ---------- */
