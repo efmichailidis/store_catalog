@@ -31,6 +31,7 @@ const COLUMNS = [
   {key:"name",label:"Ονομασία",cls:"name"},
   {key:"type",label:null},
   {key:"city",label:"Τοποθεσία"},
+  {key:"map",label:"Χάρτης",nosort:true,cls:"map"},
   {key:"geo",label:"Γεωγρ. περιφέρεια"},
   {key:"network",label:"Δίκτυο"},
   {key:"status",label:"Κατάσταση"},
@@ -164,6 +165,7 @@ function renderFacetShells(){
 function renderSortSelect(){
   const opts=[];
   for(const c of COLUMNS){
+    if(c.nosort) continue;
     const l = c.label || D().sc.typeLabel;
     if(c.key==="area"){ opts.push(["area:-1",l+": μεγαλύτερη πρώτα"],["area:1",l+": μικρότερη πρώτα"]); }
     else opts.push([c.key+":1",l+": Α→Ω"],[c.key+":-1",l+": Ω→Α"]);
@@ -240,6 +242,7 @@ function renderHead(){
   const v=V();
   $("thead").innerHTML = "<tr>" + COLUMNS.map(c=>{
     const l = c.label || D().sc.typeLabel;
+    if(c.nosort) return `<th class="${c.cls||""}"><span class="th-plain">${esc(l)}</span></th>`;
     const on = v.sort.key===c.key;
     const aria = on ? (v.sort.dir===1?"ascending":"descending") : "none";
     const arrow = on ? (v.sort.dir===1?"▲":"▼") : "▲";
@@ -248,6 +251,17 @@ function renderHead(){
 }
 
 const blank = `<span class="blank">—</span>`;
+// Google Maps search με τη διεύθυνση, γιατί τα δεδομένα δεν έχουν συντεταγμένες.
+function mapsUrl(it){
+  const parts = [it.address, [it.tk,it.city].filter(Boolean).join(" ")].filter(Boolean);
+  if(!parts.length) return "";
+  return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(parts.join(", ") + ", Ελλάδα");
+}
+function mapLink(it){
+  const u = mapsUrl(it);
+  if(!u) return blank;
+  return `<a class="maplink" href="${esc(u)}" target="_blank" rel="noopener noreferrer" title="Άνοιγμα στο Google Maps (νέα καρτέλα)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span class="sr">Χάρτης για ${esc(it.name||it.code)}, ανοίγει σε νέα καρτέλα</span><span class="ext" aria-hidden="true">↗</span></a>`;
+}
 const txt = s => s ? esc(s) : blank;
 
 function renderBody(list){
@@ -264,6 +278,7 @@ function renderBody(list){
       <td class="name"><button class="nm" aria-expanded="${open}">${txt(it.name)}</button></td>
       <td data-label="${esc(tl)}">${it.type?`<span class="tag" style="--c:${d.colors[it.type]}">${esc(it.type)}</span>`:blank}</td>
       <td data-label="Τοποθεσία"><span>${txt(it.address)}<span class="second">${esc([it.tk,it.city].filter(Boolean).join(" "))||""}</span></span></td>
+      <td class="map" data-label="Χάρτης">${mapLink(it)}</td>
       <td data-label="Γεωγρ. περιφέρεια">${txt(it.geo)}</td>
       <td data-label="Δίκτυο"><span>${txt(it.network)}${it.region?`<span class="second">${esc(it.region)}</span>`:""}</span></td>
       <td data-label="Κατάσταση">${it.status?`<span class="status ${st}">${esc(it.status)}</span>`:blank}</td>
