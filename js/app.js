@@ -260,7 +260,7 @@ function mapsUrl(it){
 function mapLink(it){
   const u = mapsUrl(it);
   if(!u) return blank;
-  return `<a class="maplink" href="${esc(u)}" target="_blank" rel="noopener noreferrer" title="Άνοιγμα στο Google Maps (νέα καρτέλα)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span class="sr">Χάρτης για ${esc(it.name||it.code)}, ανοίγει σε νέα καρτέλα</span><span class="ext" aria-hidden="true">↗</span></a>`;
+  return `<a class="maplink" href="${esc(u)}" target="_blank" rel="noopener noreferrer" title="Άνοιγμα στο Google Maps (νέα καρτέλα)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span class="sr">Χάρτης για ${esc(it.name||it.code)}, ανοίγει σε νέα καρτέλα</span></a>`;
 }
 const txt = s => s ? esc(s) : blank;
 
