@@ -394,17 +394,22 @@ window.addEventListener("drop", e=>{ e.preventDefault(); dragDepth=0; $("drop").
 /* ---------- Google Maps μέσα σε iframe / Staffbase ----------
    Μέσα στη Staffbase η σελίδα τρέχει σε iframe, όπου ένα απλό target="_blank" μπορεί να
    φορτώσει τον χάρτη μέσα στο πλαίσιο και το Google να τον μπλοκάρει ("refused to connect").
-   1) Αν απαντήσει η Staffbase, ζητάμε από την ίδια να ανοίξει τον σύνδεσμο στον browser
-      της συσκευής (openLinkExternal): σε κινητό ανοίγει ο εξωτερικός browser, σε desktop νέα καρτέλα.
-   2) Σε άλλο iframe ανοίγουμε ρητά νέο παράθυρο.
+   1) Στη native εφαρμογή Staffbase (κινητό) ζητάμε από την εφαρμογή να ανοίξει τον σύνδεσμο
+      στον browser της συσκευής (openLinkExternal).
+   2) Στη Staffbase μέσω browser (desktop/web) το openLinkExternal φορτώνει τον σύνδεσμο μέσα
+      στο πλαίσιο, όπου το Google τον μπλοκάρει (ERR_BLOCKED_BY_RESPONSE). Εκεί, όπως και σε
+      κάθε άλλο iframe, ανοίγουμε ρητά νέα καρτέλα με window.open.
    3) Αν δεν επιτρέπεται κανένα από τα δύο, εμφανίζουμε επιλογές αντιγραφής. */
 const inFrame = (()=>{ try{ return window.self !== window.top; }catch(_){ return true; } })();
 const SB = window["plugins-client-sdk"] || null;
-let staffbaseConnected = false;
+let staffbaseConnected = false, staffbaseNative = false;
 if(inFrame && SB){
   // Η Staffbase απαντά στο HELLO του SDK με SUCCESS. Το παρακολουθούμε για να ξέρουμε ότι η σύνδεση είναι πραγματική.
   window.addEventListener("message", e=>{
-    if(e.source===window.parent && Array.isArray(e.data) && e.data[0]==="SUCCESS") staffbaseConnected = true;
+    if(e.source!==window.parent || !Array.isArray(e.data) || e.data[0]!=="SUCCESS") return;
+    staffbaseConnected = true;
+    const payload = e.data[2];
+    if(payload && typeof payload==="object" && payload.platform) staffbaseNative = !!payload.platform.native;
   });
   try{ SB.isNativeApp().catch(()=>{}); }catch(_){}  // ξεκινά τη σύνδεση από τη φόρτωση, όχι στο πρώτο κλικ
 }
@@ -420,7 +425,7 @@ document.addEventListener("click", e=>{
   if(e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
   e.preventDefault(); e.stopPropagation();
   const url = a.href, addr = a.dataset.addr || "";
-  if(staffbaseConnected){
+  if(staffbaseConnected && staffbaseNative){
     SB.openLinkExternal(url)
       .then(ok=>{ if(ok===false) showMapFallback(url, addr); })
       .catch(()=>{ if(!openInNewWindow(url)) showMapFallback(url, addr); });
@@ -491,6 +496,7 @@ $("refresh").addEventListener("click", loadFromApi);
 document.addEventListener("click", e=>{ if(e.target.closest("[data-retry]")) loadFromApi(); });
 loadFromApi();
 })();
+
 
 // if (window.self === window.top) {
 //   // Η σελίδα άνοιξε απευθείας (εκτός iframe)
