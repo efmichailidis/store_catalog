@@ -397,9 +397,9 @@ document.addEventListener("click", e=>{ if(e.target.closest("[data-retry]")) loa
 loadFromApi();
 })();
 
-if (window.self === window.top) {
-  // Η σελίδα άνοιξε απευθείας (εκτός iframe)
-  document.body.innerHTML = '<h1>403 Forbidden</h1>';
-  // Προαιρετικά: Ανακατεύθυνση στο Staffbase
-  // window.location.href = 'https://your-company.staffbase.com';
-}
+// if (window.self === window.top) {
+//   // Η σελίδα άνοιξε απευθείας (εκτός iframe)
+//   document.body.innerHTML = '<h1>403 Forbidden</h1>';
+//   // Προαιρετικά: Ανακατεύθυνση στο Staffbase
+//   // window.location.href = 'https://your-company.staffbase.com';
+// }
