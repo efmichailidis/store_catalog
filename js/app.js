@@ -28,13 +28,13 @@ const SCHEMAS = {
     label:"Καταστήματα", one:"κατάστημα", many:"καταστήματα",
     fields:{code:["Κωδικός"],name:["Ονομασία"],type:["Τύπος Καταστήματος"],address:["Διεύθυνση"],tk:["ΤΚ"],city:["Πόλη / Περιοχή"],geo:["Γεωγραφική Περιφέρεια"],network:["ΔΙΚΤΥΟ","Δίκτυο Εξυπηρέτησης"],region:["ΠΕΡΙΦΕΡΕΙΑ"],status:["Κατάσταση"],loctype:["Τύπος τοποθεσίας"],owner:["Ιδιοκτησιακό καθεστώς"],area:["Επιφάνεια ακινήτου (τ.μ.)"],desc:["Ανάλυση / περιγραφή ακινήτου"],email:["Email"],update:["ΤΕΛΕΥΤΑΙΑ ΕΝΗΜΕΡΩΣΗ"]},
     typeLabel:"Τύπος", mixTitle:"Κατανομή ανά τύπο καταστήματος",
-    facets:[["type","Τύπος"],["status","Κατάσταση"],["geo","Γεωγρ. περιφέρεια"],["network","Δίκτυο"],["region","Περιφέρεια"],["owner","Ιδιοκτησία"],["loctype","Τύπος τοποθεσίας"]]
+    facets:[["type","Τύπος"],["status","Κατάσταση"],["geo","Γεωγρ. περιφέρεια"],["network","Δίκτυο"],["region","Περιφέρεια"],["loctype","Τύπος τοποθεσίας"]]
   },
   facilities:{
     label:"Εγκαταστάσεις", one:"εγκατάσταση", many:"εγκαταστάσεις",
     fields:{code:["Κωδικός Εγκατάστασης","Κωδικός"],name:["Ονομασία"],type:["Κατηγορία Εγκατάστασης"],address:["Διεύθυνση"],tk:["ΤΚ"],city:["Πόλη / Περιοχή"],geo:["Γεωγραφική Περιφέρεια"],network:["Δίκτυο Εξυπηρέτησης","ΔΙΚΤΥΟ"],region:["ΠΕΡΙΦΕΡΕΙΑ"],status:["Κατάσταση"],loctype:["Τύπος τοποθεσίας"],owner:["Ιδιοκτησιακό καθεστώς"],area:["Επιφάνεια ακινήτου (τ.μ.)"],desc:["Ανάλυση / περιγραφή ακινήτου"],email:["Email"],update:["ΤΕΛΕΥΤΑΙΑ ΕΝΗΜΕΡΩΣΗ"]},
     typeLabel:"Κατηγορία", mixTitle:"Κατανομή ανά κατηγορία εγκατάστασης",
-    facets:[["type","Κατηγορία"],["status","Κατάσταση"],["geo","Γεωγρ. περιφέρεια"],["network","Δίκτυο"],["loctype","Τύπος τοποθεσίας"],["owner","Ιδιοκτησία"]]
+    facets:[["type","Κατηγορία"],["status","Κατάσταση"],["geo","Γεωγρ. περιφέρεια"],["network","Δίκτυο"],["loctype","Τύπος τοποθεσίας"]]
   }
 };
 // Spelling variants of the same store type are merged so filters don't split them.
@@ -49,7 +49,6 @@ const COLUMNS = [
   {key:"geo",label:"Γεωγρ. περιφέρεια"},
   {key:"network",label:"Δίκτυο"},
   {key:"status",label:"Κατάσταση"},
-  {key:"owner",label:"Ιδιοκτησία"},
   {key:"area",label:"Επιφάνεια (τ.μ.)",cls:"num"}
 ];
 
@@ -297,7 +296,6 @@ function renderBody(list){
       <td data-label="Γεωγρ. περιφέρεια">${txt(it.geo)}</td>
       <td data-label="Δίκτυο"><span>${txt(it.network)}${it.region?`<span class="second">${esc(it.region)}</span>`:""}</span></td>
       <td data-label="Κατάσταση">${it.status?`<span class="status ${st}">${esc(it.status)}</span>`:blank}</td>
-      <td data-label="Ιδιοκτησία">${txt(it.owner)}</td>
       <td class="num" data-label="Επιφάνεια">${it.area!=null?nf.format(it.area):blank}</td>
       <td class="chev muted" aria-hidden="true">${open?"▾":"▸"}</td>
     </tr>`;
