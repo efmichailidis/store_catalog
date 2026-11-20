@@ -476,7 +476,8 @@ async function loadFromApi(){
     let json;
     try{ json = await res.json(); }catch(_){ throw new Error("Η απάντηση του API δεν είναι έγκυρο JSON."); }
     if(json && json.success === false) throw new Error("Το API επέστρεψε success: false" + (json.error||json.message ? ` (${json.error||json.message})` : "") + ".");
-    load(json, `Ενημερώθηκε από το API στις ${timeFmt.format(new Date())}`, true);
+    // load(json, `Ενημερώθηκε από το API στις ${timeFmt.format(new Date())}`, true);
+    load(json, ``, true);
     $("banner").innerHTML = "";
   }catch(err){
     if(ctrl.signal.aborted && ctrl.signal.reason !== "timeout" && inFlight !== ctrl) return; // αντικαταστάθηκε από νεότερο αίτημα
