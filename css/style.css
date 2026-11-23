@@ -1,3 +1,7 @@
+  ::-webkit-scrollbar {
+      display: none;
+  }
+
 :root{
   --bg:#FFFFFF; --surface:#FFFFFF; --surface-2:#F5F6F4; --ink:#18212B; --muted:#5B6570; --line:#E1E4DF;
   --accent:#A92A1F; --accent-soft:#F5E2DF; --ok:#2C7A4B; --future:#9A5D08; --focus:#1F5FBF;
