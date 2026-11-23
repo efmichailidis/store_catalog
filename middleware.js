@@ -1,5 +1,5 @@
 export const config = {
-  matcher: '/:path*', // Εφαρμόζεται σε όλες τις σελίδες
+  ['/index.html', '/list.html'],
 };
 
 export default function middleware(request) {
