@@ -1,11 +1,11 @@
 export const config = {
-  ['/index.html', '/list.html'],
+  matcher: ['/index.html', '/list.html'],
 };
 
 export default function middleware(request) {
 
   const ALLOWED_DOMAIN = 'https://app.sklavenitismentor.gr';
-
+  
   return new Response(null, {
       status: 200,
       headers: {
