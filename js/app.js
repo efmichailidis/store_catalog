@@ -363,7 +363,7 @@ function readFile(f){
   r.onerror=()=>banner(`Δεν διαβάστηκε το ${esc(f.name)}.`, true);
   r.readAsText(f,"utf-8");
 }
-$("file").addEventListener("change", e=>{ readFile(e.target.files[0]); e.target.value=""; });
+// $("file").addEventListener("change", e=>{ readFile(e.target.files[0]); e.target.value=""; });
 let dragDepth=0;
 window.addEventListener("dragenter", e=>{ if([...(e.dataTransfer?.types||[])].includes("Files")){ dragDepth++; $("drop").classList.add("on"); } });
 window.addEventListener("dragleave", ()=>{ if(--dragDepth<=0){ dragDepth=0; $("drop").classList.remove("on"); } });
