@@ -1,17 +1,3 @@
-/**
- * Bundle of @staffbase/plugins-client-sdk
- * @file Staffbase plugins client SDK for JavaScript
- * @see https://github.com/Staffbase/plugins-client-sdk#readme
- * @version 3.0.0-alpha.4
- *
- * @author Stefan Staude <stefan.staude@staffbase.com>
- * @author Daniel Große <daniel.grosse@staffbase.com>
- *
- * @copyright  2026
- * @license Apache-2.0
- */
-!function(e,a){"object"==typeof exports&&"undefined"!=typeof module?a(exports):"function"==typeof define&&define.amd?define(["exports"],a):a((e="undefined"!=typeof globalThis?globalThis:e||self)["plugins-client-sdk"]={})}(this,(function(e){"use strict";function a(e){return e&&e.__esModule&&Object.prototype.hasOwnProperty.call(e,"default")?e.default:e}var n,o,l,t,i,r={exports:{}},c=r.exports;n||(n=1,function(e){var a,n;a=c,n=function(){var e=function(){},a="undefined",n=typeof window!==a&&typeof window.navigator!==a&&/Trident\/|MSIE /.test(window.navigator.userAgent),o=["trace","debug","info","warn","error"],l={},t=null;function i(e,a){var n=e[a];if("function"==typeof n.bind)return n.bind(e);try{return Function.prototype.bind.call(n,e)}catch(a){return function(){return Function.prototype.apply.apply(n,[e,arguments])}}}function r(){console.log&&(console.log.apply?console.log.apply(console,arguments):Function.prototype.apply.apply(console.log,[console,arguments])),console.trace&&console.trace()}function c(){for(var n=this.getLevel(),l=0;l<o.length;l++){var t=o[l];this[t]=l<n?e:this.methodFactory(t,n,this.name)}if(this.log=this.debug,typeof console===a&&n<this.levels.SILENT)return"No console available for logging"}function s(e){return function(){typeof console!==a&&(c.call(this),this[e].apply(this,arguments))}}function d(o,l,t){return function(o){return"debug"===o&&(o="log"),typeof console!==a&&("trace"===o&&n?r:void 0!==console[o]?i(console,o):void 0!==console.log?i(console,"log"):e)}(o)||s.apply(this,arguments)}function m(e,n){var i,r,s,m=this,u="loglevel";function f(){var e;if(typeof window!==a&&u){try{e=window.localStorage[u]}catch(e){}if(typeof e===a)try{var n=window.document.cookie,o=encodeURIComponent(u),l=n.indexOf(o+"=");-1!==l&&(e=/^([^;]+)/.exec(n.slice(l+o.length+1))[1])}catch(e){}return void 0===m.levels[e]&&(e=void 0),e}}function y(e){var a=e;if("string"==typeof a&&void 0!==m.levels[a.toUpperCase()]&&(a=m.levels[a.toUpperCase()]),"number"==typeof a&&a>=0&&a<=m.levels.SILENT)return a;throw new TypeError("log.setLevel() called with invalid level: "+e)}"string"==typeof e?u+=":"+e:"symbol"==typeof e&&(u=void 0),m.name=e,m.levels={TRACE:0,DEBUG:1,INFO:2,WARN:3,ERROR:4,SILENT:5},m.methodFactory=n||d,m.getLevel=function(){return null!=s?s:null!=r?r:i},m.setLevel=function(e,n){return s=y(e),!1!==n&&function(e){var n=(o[e]||"silent").toUpperCase();if(typeof window!==a&&u){try{return void(window.localStorage[u]=n)}catch(e){}try{window.document.cookie=encodeURIComponent(u)+"="+n+";"}catch(e){}}}(s),c.call(m)},m.setDefaultLevel=function(e){r=y(e),f()||m.setLevel(e,!1)},m.resetLevel=function(){s=null,function(){if(typeof window!==a&&u){try{window.localStorage.removeItem(u)}catch(e){}try{window.document.cookie=encodeURIComponent(u)+"=; expires=Thu, 01 Jan 1970 00:00:00 UTC"}catch(e){}}}(),c.call(m)},m.enableAll=function(e){m.setLevel(m.levels.TRACE,e)},m.disableAll=function(e){m.setLevel(m.levels.SILENT,e)},m.rebuild=function(){if(t!==m&&(i=y(t.getLevel())),c.call(m),t===m)for(var e in l)l[e].rebuild()},i=y(t?t.getLevel():"WARN");var p=f();null!=p&&(s=y(p)),c.call(m)}(t=new m).getLogger=function(e){if("symbol"!=typeof e&&"string"!=typeof e||""===e)throw new TypeError("You must supply a name when creating a logger.");var a=l[e];return a||(a=l[e]=new m(e,t.methodFactory)),a};var u=typeof window!==a?window.log:void 0;return t.noConflict=function(){return typeof window!==a&&window.log===t&&(window.log=u),t},t.getLoggers=function(){return l},t.default=t,t},e.exports?e.exports=n():a.log=n()}(r));var s=i?t:(i=1,t="function"==typeof Object.entries?Object.entries:function(){if(l)return o;l=1;var e=function(e,a){return Object.prototype.hasOwnProperty.call(e,a)},a=function(e,a){return Object.prototype.propertyIsEnumerable.call(e,a)};return o=function(n){if(null==n)throw new TypeError("Cannot convert undefined or null to object");var o=[];for(var l in n)e(n,l)&&a(n,l)&&o.push([l,n[l]]);return o}}());const d={ios:"dev-ios",android:"dev-android",version:"app-version",mobile:"app-mobile",native:"app-native",instanceUrl:"instance-url",openLink:"openExternalLink",nativeUpload:"nativeFileUpload",nativeShare:"nativeShareDialog",langInfos:"getLanguageInfos",branchDefaultLang:"getBranchDefaultLanguage",prefContentLang:"getPreferredContentLocale",userContentLocale:"getUserContentLocale"},m=a(s)(d).reduce(((e,a)=>{let[n,o]=a;return e[o]=n,e}),{});var u={af:{key:"af",locale:"af_ZA",name:"Afrikaans",localizedName:"Afrikaans"},am:{key:"am",locale:"am_ET",name:"አማርኛ",localizedName:"Amharic"},ar:{key:"ar",locale:"ar_SA",name:"العربية (المملكة العربية السعودية)",direction:"rtl",localizedName:"Arabic (Saudi Arabia)"},arAE:{key:"arAE",locale:"ar_AE",name:"العربية (الإمارات العربية المتحدة)",direction:"rtl",localizedName:"Arabic (United Arab Emirates)"},arEG:{key:"arEG",locale:"ar_EG",name:"العربية (مصر)",direction:"rtl",localizedName:"Arabic (Egypt)"},bg:{key:"bg",locale:"bg_BG",name:"български",localizedName:"Bulgarian"},bn:{key:"bn",locale:"bn_BD",name:"বাংলা",localizedName:"Bengali"},bs:{key:"bs",locale:"bs_BA",name:"Bosanski",localizedName:"Bosnian"},cs:{key:"cs",locale:"cs_CZ",name:"Čeština",localizedName:"Czech"},cy:{key:"cy",locale:"cy_GB",name:"Cymraeg",localizedName:"Welsh"},da:{key:"da",locale:"da_DK",name:"Dansk",localizedName:"Danish"},de:{key:"de",locale:"de_DE",name:"Deutsch",localizedName:"German"},el:{key:"el",locale:"el_GR",name:"Ελληνικά",localizedName:"Greek"},en:{key:"en",locale:"en_US",name:"English",localizedName:"English"},enGB:{key:"enGB",locale:"en_GB",name:"English (United Kingdom)",localizedName:"English (United Kingdom)"},es:{key:"es",locale:"es_ES",name:"Español (España)",localizedName:"Spanish (Spain)"},esMX:{key:"esMX",locale:"es_MX",name:"Español (México)",localizedName:"Spanish (Mexico)"},et:{key:"et",locale:"et_EE",name:"Eesti keel",localizedName:"Estonian"},fi:{key:"fi",locale:"fi_FI",name:"Suomi",localizedName:"Finnish"},fr:{key:"fr",locale:"fr_FR",name:"Français (France)",localizedName:"French (France)"},frCA:{key:"frCA",locale:"fr_CA",name:"Français (Canada)",localizedName:"French (Canada)"},he:{key:"he",locale:"he_IL",name:"עִבְרִית",direction:"rtl",localizedName:"Hebrew"},hi:{key:"hi",locale:"hi_IN",name:"िन्दी",localizedName:"Hindi"},hk:{key:"hk",locale:"zh_HK",name:"繁體中文",localizedName:"Chinese traditional"},ht:{key:"ht",locale:"ht_HT",name:"kreyòl ayisyen",localizedName:"Haitian Creole"},hr:{key:"hr",locale:"hr_HR",name:"Hrvatski",localizedName:"Croatian"},hu:{key:"hu",locale:"hu_HU",name:"Magyar",localizedName:"Hungarian"},id:{key:"id",locale:"id_ID",name:"Bahasa Indonesia",localizedName:"Indonesian"},is:{key:"is",locale:"is_IS",name:"Íslenska",localizedName:"Icelandic"},it:{key:"it",locale:"it_IT",name:"Italiano",localizedName:"Italian"},ja:{key:"ja",locale:"ja_JP",name:"日本語",localizedName:"Japanese"},kl:{key:"kl",locale:"kl_GL",name:"Kalaallisut",localizedName:"Greenlandic"},km:{key:"km",locale:"km_KH",name:"ខ្មែរ",localizedName:"Khmer"},ko:{key:"ko",locale:"ko_KR",name:"한국어",localizedName:"Korean"},lo:{key:"lo",locale:"lo_LA",name:"ລາວ",localizedName:"Lao"},lt:{key:"lt",locale:"lt_LT",name:"Lietuvių",localizedName:"Lithuanian"},lv:{key:"lv",locale:"lv_LV",name:"Latviešu",localizedName:"Latvian"},mg:{key:"mg",locale:"mg_MG",name:"Malagasy",localizedName:"Malagasy"},mk:{key:"mk",locale:"mk_MK",name:"Македонски",localizedName:"Macedonian"},mh:{key:"mh",locale:"mh_MH",name:"Kajin M̧ajeļ",localizedName:"Marshallese"},mi:{key:"mi",locale:"mi_NZ",name:"Māori",localizedName:"Māori"},mn:{key:"mn",locale:"mn_MN",name:"монгол",localizedName:"Mongolian"},mr:{key:"mr",locale:"mr_IN",name:"मराठी",localizedName:"Marathi"},ms:{key:"ms",locale:"ms_MY",name:"Bahasa Melayu",localizedName:"Malay"},my:{key:"my",locale:"my_MM",name:"Burmese",localizedName:"Burmese"},ne:{key:"ne",locale:"ne_NP",name:"नेपाली",localizedName:"Nepali"},nl:{key:"nl",locale:"nl_NL",name:"Nederlands",localizedName:"Dutch"},nlBE:{key:"nlBE",locale:"nl_BE",name:"Vlaemsch",localizedName:"Flemish"},no:{key:"no",locale:"no_NO",name:"Norsk",localizedName:"Norwegian"},pl:{key:"pl",locale:"pl_PL",name:"Polski",localizedName:"Polish"},pt:{key:"pt",locale:"pt_PT",name:"Português (Portugal)",localizedName:"Portuguese (Portugal)"},ptBR:{key:"ptBR",locale:"pt_BR",name:"Português (Brasil)",localizedName:"Portuguese (Brazil)"},ro:{key:"ro",locale:"ro_RO",name:"Română",localizedName:"Romanian"},ru:{key:"ru",locale:"ru_RU",name:"Русский",localizedName:"Russian"},si:{key:"si",locale:"si_LK",name:"සිංහල",localizedName:"Sinhala"},sk:{key:"sk",locale:"sk_SK",name:"Slovenský",localizedName:"Slovak"},sl:{key:"sl",locale:"sl_SI",name:"Slovenščina",localizedName:"Slovenian"},sq:{key:"sq",locale:"sq_AL",name:"Shqip",localizedName:"Albanian"},sr:{key:"sr",locale:"sr_RS",name:"Српски",localizedName:"Serbian"},so:{key:"so",locale:"so_SO",name:"Af-Soomaali",localizedName:"Somali"},sv:{key:"sv",locale:"sv_SE",name:"Svenska",localizedName:"Swedish"},sw:{key:"sw",locale:"sw_TZ",name:"Swahili",localizedName:"Swahili"},ta:{key:"ta",locale:"ta_IN",name:"தமிழ்",localizedName:"Tamil"},tl:{key:"tl",locale:"tl_PH",name:"Filipino",localizedName:"Filipino"},th:{key:"th",locale:"th_TH",name:"ภาษาไทย",localizedName:"Thai"},tr:{key:"tr",locale:"tr_TR",name:"Türkçe",localizedName:"Turkish"},uk:{key:"uk",locale:"uk_UA",name:"Українська",localizedName:"Ukrainian"},ur:{key:"ur",locale:"ur_PK",name:"اُردُو",direction:"rtl",localizedName:"Urdu"},vi:{key:"vi",locale:"vi_VN",name:"Tiếng Việt",localizedName:"Vietnamese"},zh:{key:"zh",locale:"zh_CN",name:"简体中文",localizedName:"Chinese"},zu:{key:"zu",locale:"zu_ZA",name:"isiZulu",localizedName:"Zulu"}};const f=navigator.userAgent||navigator.vendor||window.opera||"",y=(p=(p=window&&window.navigator.language)&&p.split(/-|_/)[0]||p,-1!==["nb","nn"].indexOf(p)&&(p="no"),"iw"===p&&(p="he"),p);var p;"undefined"!=typeof window&&(window.Staffbase=window.Staffbase||{},window.Staffbase.platform=window.Staffbase.platform||{version:"3.4",mobile:/Android|webOS|iPhone|iPad|BlackBerry|BB10|IEMobile|Opera Mini/i.test(f),native:!1});const g=()=>"ios"===window.Staffbase.platform.native||/iPhone|iPad|iPod/i.test(f),h=e=>{window.open(e,"_blank")},v=()=>u[y]||u.en,k=e=>{const a=v().locale;if(!e)return a;if(Array.isArray(e)){const n=e.indexOf(a);return e[n]||e[0]}{const n=Object.keys(e),o=n.indexOf(a);return n[o]||n[0]}};let w=null;const N=async function(e){for(var a=arguments.length,n=new Array(a>1?a-1:0),o=1;o<a;o++)n[o-1]=arguments[o];switch(e){case d.version:return window.Staffbase.platform.version;case d.native:return(()=>{const e=/safari/i.test(f);return"android"===window.Staffbase.platform.native||"ios"===window.Staffbase.platform.native||!e&&g()})();case d.mobile:return window.Staffbase.platform.mobile;case d.ios:return g();case d.android:return"android"===window.Staffbase.platform.native||/Android/i.test(f);case d.openLink:return h.apply(null,n);case d.langInfos:return(()=>{const e=v();return{contentLanguage:e,branchLanguages:u,branchDefaultLanguage:e,deviceLanguage:e,contentLanguages:u}})();case d.branchDefaultLang:return v();case d.prefContentLang:return k.apply(null,n);case d.userContentLocale:return v().locale;case d.instanceUrl:return window.location.ancestorOrigins&&window.location.ancestorOrigins[0]||document.referrer||"";case d.nativeUpload:case d.nativeShare:return;default:throw new Error("Command "+e+" not supported by driver")}};var z="HELLO",b="SUCCESS",L="INVOCATION",_="ERROR";const S={[d.openLink]:"openLink",[d.nativeUpload]:"nativeFileUpload",[d.nativeShare]:"nativeShareDialog",[d.langInfos]:"getPluginLanguageInfo",[d.prefContentLang]:"getPreferredContentLocale"};let E={};function A(){const e=Math.floor(65536*(1+Math.random())).toString(16).substring(1);return e in E?A():(E[e]={resolve:null,reject:null,promise:null},e)}const I=()=>{const e=A(),a=new Promise((function(a,n){E[e].resolve=a,E[e].reject=n}));return E[e].promise=a,e},C=(e,a)=>{e in E&&(E[e].reject(a),delete E[e])},M=e=>{if(!(e in E))throw new Error("Tried to get an unknown ["+e+"] promise.");return E[e].promise};let B=null;const T=()=>{window.removeEventListener("message",U),B=null},U=async e=>{let a,n,o;try{({data:[a,n,o]}=e)}catch(e){return}switch(a){case b:((e,a)=>{e in E&&(E[e].resolve(a),delete E[e])})(n,o);break;case _:C(n,o);break;default:return}},P=e=>async function(a){switch(a){case d.version:case d.native:case d.mobile:case d.ios:case d.android:case d.branchDefaultLang:case d.instanceUrl:return e[m[a]];case d.langInfos:case d.openLink:case d.nativeUpload:case d.nativeShare:case d.prefContentLang:for(var n=arguments.length,o=new Array(n>1?n-1:0),l=1;l<n;l++)o[l-1]=arguments[l];return R(I())(S[a],o);default:throw new Error("Command "+a+" not supported by driver")}},R=e=>(a,n)=>(window.parent.postMessage([L,e,a,n],"*"),M(e));let D;const O=async()=>{const e=(()=>{if(B)return B;const e=I();let a;B=M(e).then((e=>(window.clearTimeout(a),P((e=>{let{platform:a,language:n,instance:o}=e;return{mobile:a.mobile,version:a.version,native:!!a.native,ios:"ios"===a.native,android:"android"===a.native,langInfos:n,branchDefaultLanguage:n.branchDefaultLanguage,instanceUrl:o&&o.url||""}})(e))))),window.addEventListener("message",U);const n=function(){let o=arguments.length>0&&void 0!==arguments[0]?arguments[0]:500;a=window.setTimeout((()=>{o<1200?n(1.2*o):(C(e,"No answer from Staffbase App"),T())}),o),window.parent.postMessage([z,e,[]],"*")};return n(),B})(),a=w||(w=new Promise((e=>{setTimeout((function(){e(N)}),500)})),w),n=[e],o=n.concat(a);return Promise.race(n).then((e=>{D=e})),await Promise.race(o)},x=async function(e){D||(D=O());const a=await D;for(var n=arguments.length,o=new Array(n>1?n-1:0),l=1;l<n;l++)o[l-1]=arguments[l];return a(e,...o)},F=async()=>x(d.version),j=async()=>x(d.native),G=/^[v^~<>=]*?(\d+)(?:\.([x*]|\d+)(?:\.([x*]|\d+)(?:\.([x*]|\d+))?(?:-([\da-z\-]+(?:\.[\da-z\-]+)*))?(?:\+[\da-z\-]+(?:\.[\da-z\-]+)*)?)?)?$/i,H=e=>{if("string"!=typeof e)throw new TypeError("Invalid argument expected string");const a=e.match(G);if(!a)throw new Error(`Invalid argument not valid semver ('${e}' received)`);return a.shift(),a},K=e=>"*"===e||"x"===e||"X"===e,V=e=>{const a=parseInt(e,10);return isNaN(a)?e:a},Z=(e,a)=>{if(K(e)||K(a))return 0;const[n,o]=((e,a)=>typeof e!=typeof a?[String(e),String(a)]:[e,a])(V(e),V(a));return n>o?1:n<o?-1:0},q=(e,a)=>{for(let n=0;n<Math.max(e.length,a.length);n++){const o=Z(e[n]||"0",a[n]||"0");if(0!==o)return o}return 0},X=async()=>x(d.ios),J=async()=>{let[e,a,n]=await Promise.all([j(),F(),X()]);const o=a.indexOf("-");return a=a.substring(0,-1!=o?o:a.length),!(((e,a)=>{const n=H(e),o=H(a),l=n.pop(),t=o.pop(),i=q(n,o);return 0!==i?i:l&&t?q(l.split("."),t.split(".")):l||t?l?-1:1:0})(a,"3.5")<0&&e&&n)};e.deviceCanDownload=async()=>J(),e.getAppVersion=async()=>F(),e.getBranchDefaultLanguage=async()=>(async()=>x(d.langInfos).then((e=>e.branchDefaultLanguage)))(),e.getBranchLanguages=async()=>(async()=>x(d.langInfos).then((e=>e.branchLanguages)))(),e.getContentLanguages=async()=>(async()=>x(d.langInfos).then((e=>e.contentLanguages)))(),e.getInstanceUrl=async()=>(async()=>x(d.instanceUrl))(),e.getPreferredContentLocale=async e=>(async e=>x(d.prefContentLang,e))(e),e.getUserContentLocale=async()=>(async()=>x(d.langInfos).then((e=>e.userContentLocale)))(),e.isAndroidDevice=async()=>(async()=>x(d.android))(),e.isIosDevice=async()=>X(),e.isMobileApp=async()=>(async()=>x(d.mobile))(),e.isNativeApp=async()=>j(),e.openLink=async e=>(async e=>x(d.openLink,e))(e),e.openLinkExternal=async e=>(async e=>x(d.openLink,e,{inAppBrowser:!1}))(e),e.openLinkInternal=async e=>(async e=>x(d.openLink,e,{inAppBrowser:!0}))(e),e.openNativeFileDialog=async()=>x(d.nativeUpload),e.openNativeShareDialog=async e=>(async e=>x(d.nativeShare,e))(e)}));
-
 (function(){
 "use strict";
 // Endpoint που επιστρέφει { success, items: { stores: [[...]], facilities: [[...]] } }
@@ -28,17 +14,36 @@ const SCHEMAS = {
     label:"Καταστήματα", one:"κατάστημα", many:"καταστήματα",
     fields:{code:["Κωδικός"],name:["Ονομασία"],type:["Τύπος Καταστήματος"],address:["Διεύθυνση"],tk:["ΤΚ"],city:["Πόλη / Περιοχή"],geo:["Γεωγραφική Περιφέρεια"],network:["ΔΙΚΤΥΟ","Δίκτυο Εξυπηρέτησης"],region:["ΠΕΡΙΦΕΡΕΙΑ"],status:["Κατάσταση"],loctype:["Τύπος τοποθεσίας"],owner:["Ιδιοκτησιακό καθεστώς"],area:["Επιφάνεια ακινήτου (τ.μ.)"],desc:["Ανάλυση / περιγραφή ακινήτου"],email:["Email"],update:["ΤΕΛΕΥΤΑΙΑ ΕΝΗΜΕΡΩΣΗ"]},
     typeLabel:"Τύπος", mixTitle:"Κατανομή ανά τύπο καταστήματος",
-    facets:[["type","Τύπος"],["status","Κατάσταση"],["geo","Γεωγρ. περιφέρεια"],["network","Δίκτυο"],["region","Περιφέρεια"],["loctype","Τύπος τοποθεσίας"]]
+    facets:[["type","Τύπος"],["geo","Γεωγρ. περιφέρεια"],["network","Δίκτυο"],["region","Περιφέρεια"],["owner","Ιδιοκτησία"],["loctype","Τύπος τοποθεσίας"]]
   },
   facilities:{
     label:"Εγκαταστάσεις", one:"εγκατάσταση", many:"εγκαταστάσεις",
     fields:{code:["Κωδικός Εγκατάστασης","Κωδικός"],name:["Ονομασία"],type:["Κατηγορία Εγκατάστασης"],address:["Διεύθυνση"],tk:["ΤΚ"],city:["Πόλη / Περιοχή"],geo:["Γεωγραφική Περιφέρεια"],network:["Δίκτυο Εξυπηρέτησης","ΔΙΚΤΥΟ"],region:["ΠΕΡΙΦΕΡΕΙΑ"],status:["Κατάσταση"],loctype:["Τύπος τοποθεσίας"],owner:["Ιδιοκτησιακό καθεστώς"],area:["Επιφάνεια ακινήτου (τ.μ.)"],desc:["Ανάλυση / περιγραφή ακινήτου"],email:["Email"],update:["ΤΕΛΕΥΤΑΙΑ ΕΝΗΜΕΡΩΣΗ"]},
     typeLabel:"Κατηγορία", mixTitle:"Κατανομή ανά κατηγορία εγκατάστασης",
-    facets:[["type","Κατηγορία"],["status","Κατάσταση"],["geo","Γεωγρ. περιφέρεια"],["network","Δίκτυο"],["loctype","Τύπος τοποθεσίας"]]
+    facets:[["type","Κατηγορία"],["geo","Γεωγρ. περιφέρεια"],["network","Δίκτυο"],["loctype","Τύπος τοποθεσίας"],["owner","Ιδιοκτησία"]]
   }
 };
 // Spelling variants of the same store type are merged so filters don't split them.
-const TYPE_ALIASES = {"SELF SERVICE":"SELF-SERVICE","FOOD TO GO":"FTG"};
+// Καταστάσεις που δεν εμφανίζονται καθόλου στη σελίδα.
+const HIDDEN_STATUSES = new Set(["μελλοντικό"]);
+// Τύποι καταστημάτων: σειρά εμφάνισης, ονομασία που εμφανίζεται, και οι τιμές του φύλλου που αντιστοιχούν.
+// Η σύγκριση αγνοεί κεφαλαία, κενά και παύλες. Τύποι που δεν είναι εδώ μπαίνουν μετά, αλφαβητικά.
+const TYPE_ORDER = [
+  ["Hypermarket",           ["HYPER","HYPERMARKET"]],
+  ["Supermarket+",          ["SUPER+","SUPERMARKET+"]],
+  ["Supermarket",           ["SUPER","SUPERMARKET"]],
+  ["Freshmarket",           ["FRESH","FRESHMARKET","FRESH MARKET"]],
+  ["Self-service",          ["SELF-SERVICE","SELF SERVICE","SELFSERVICE"]],
+  ["Food to Go",            ["FTG","FOOD TO GO","FOOD-TO-GO"]],
+  ["Franchise",             ["FRANCHISE"]],
+  ["Franchise Food to Go",  ["FTG FRANCHISE","FRANCHISE FTG","FRANCHISE FOOD TO GO","FOOD TO GO FRANCHISE"]]
+];
+const typeKey = s => String(s).toUpperCase().replace(/[\s\-_]+/g,"");
+const TYPE_CANON = new Map(), TYPE_RANK = new Map();
+TYPE_ORDER.forEach(([label,aliases],i)=>{ TYPE_RANK.set(label,i); [label,...aliases].forEach(a=>TYPE_CANON.set(typeKey(a),label)); });
+const canonType = s => s ? (TYPE_CANON.get(typeKey(s)) || s) : s;
+const typeRank = s => TYPE_RANK.has(s) ? TYPE_RANK.get(s) : TYPE_ORDER.length;
+const compareType = (a,b) => (typeRank(a)-typeRank(b)) || coll.compare(a,b);
 
 const COLUMNS = [
   {key:"code",label:"Κωδικός",cls:"code"},
@@ -49,6 +54,7 @@ const COLUMNS = [
   {key:"geo",label:"Γεωγρ. περιφέρεια"},
   {key:"network",label:"Δίκτυο"},
   {key:"status",label:"Κατάσταση"},
+  {key:"owner",label:"Ιδιοκτησία"},
   {key:"area",label:"Επιφάνεια (τ.μ.)",cls:"num"}
 ];
 
@@ -60,7 +66,11 @@ const clean = v => (v==null?"":String(v)).replace(/\s+$/,"").replace(/^\s+/,"");
 function parseArea(s){
   const m = clean(s).match(/\d[\d.]*(,\d*)?/);
   if(!m) return null;
-  const n = parseFloat(m[0].replace(/\./g,"").replace(",","."));
+  let num = m[0];
+  // Ελληνική μορφή: η τελεία είναι διαχωριστικό χιλιάδων («2.042»). Αν όμως δεν υπάρχει κόμμα
+  // και η τελευταία ομάδα μετά την τελεία δεν έχει 3 ψηφία («4.472.77»), είναι υποδιαστολή.
+  if(!num.includes(",")){ const k = num.lastIndexOf("."); if(k>=0 && num.length-k-1!==3) num = num.slice(0,k)+","+num.slice(k+1); }
+  const n = parseFloat(num.replace(/\./g,"").replace(",","."));
   return isFinite(n) ? n : null;
 }
 
@@ -81,7 +91,8 @@ function buildDataset(kind, rows){
     const g = k => has(k) ? clean(r[idx[k]]) : "";
     if(!updateNote && g("update")) updateNote = g("update");
     if(!g("code") && !g("name")) return;
-    let type = g("type"); type = TYPE_ALIASES[type.toUpperCase()] || type;
+    if(HIDDEN_STATUSES.has(g("status").toLowerCase())) return;  // τα μελλοντικά δεν εμφανίζονται
+    const type = canonType(g("type"));
     const it = {
       id: kind+":"+i, code:g("code"), name:g("name"), type, address:g("address"), tk:g("tk"), city:g("city"),
       geo:g("geo"), network:g("network"), region:g("region"), status:g("status"), loctype:g("loctype"),
@@ -99,7 +110,7 @@ function buildDataset(kind, rows){
 }
 
 const state = {tab:"stores", data:{}, view:{}};
-function freshView(){ return {q:"", sel:{}, amin:"", amax:"", anull:false, sort:{key:"name",dir:1}, open:new Set()}; }
+function freshView(){ return {q:"", sel:{}, sort:{key:"name",dir:1}, open:new Set()}; }
 
 function load(json, sourceLabel, keepViews){
   const items = json && json.items;
@@ -126,14 +137,6 @@ function passes(it, v, except){
     if(k===except || !set.size) continue;
     if(!set.has(val(it,k))) return false;
   }
-  if(except!=="area"){
-    if(v.anull){ if(it.area!=null) return false; }
-    else{
-      const mn = v.amin===""?null:+v.amin, mx = v.amax===""?null:+v.amax;
-      if(mn!=null && (it.area==null || it.area<mn)) return false;
-      if(mx!=null && (it.area==null || it.area>mx)) return false;
-    }
-  }
   if(v.q){
     const terms = fold(v.q).split(/\s+/).filter(Boolean);
     for(const t of terms) if(!it.hay.includes(t)) return false;
@@ -147,7 +150,8 @@ function counts(key){
 }
 function allValues(key){
   const s=new Set(D().items.map(it=>val(it,key)));
-  return [...s].sort((a,b)=> a===EMPTY?1 : b===EMPTY?-1 : coll.compare(a,b));
+  const cmp = key==="type" ? compareType : coll.compare;
+  return [...s].sort((a,b)=> a===EMPTY?1 : b===EMPTY?-1 : cmp(a,b));
 }
 function sortItems(list){
   const {key,dir}=V().sort;
@@ -157,7 +161,7 @@ function sortItems(list){
     const ex = x===null||x==="", ey = y===null||y==="";
     if(ex&&ey) return coll.compare(a.name,b.name);
     if(ex) return 1; if(ey) return -1;
-    const c = key==="area" ? x-y : coll.compare(x,y);
+    const c = key==="area" ? x-y : key==="type" ? compareType(x,y) : coll.compare(x,y);
     return c ? c*dir : coll.compare(a.name,b.name);
   });
 }
@@ -186,40 +190,25 @@ function renderSortSelect(){
   $("sortsel").innerHTML = opts.map(([v,l])=>`<option value="${v}">Ταξινόμηση: ${esc(l)}</option>`).join("");
 }
 function syncInputs(){
-  const v=V(); $("q").value=v.q; $("amin").value=v.amin; $("amax").value=v.amax; $("anull").checked=v.anull;
+  const v=V(); $("q").value=v.q; 
 }
 
 function render(){
   const d=D(), v=V();
   const list = sortItems(d.items.filter(it=>passes(it,v)));
-  renderMix(); renderFacetLists(); renderChips(); renderHead(); renderBody(list);
+  renderFacetLists(); renderChips(); renderHead(); renderBody(list);
   $("sortsel").value = v.sort.key+":"+v.sort.dir;
   const total = list.reduce((s,it)=>s+(it.area||0),0);
   const missing = list.filter(it=>it.area==null).length;
   $("count").innerHTML = list.length===d.items.length
-    ? `<strong>${list.length}</strong> ${d.sc.many}, συνολική επιφάνεια <strong>${nf.format(total)}</strong> τ.μ.` + (missing?` <span class="muted">(${missing} χωρίς επιφάνεια)</span>`:"")
-    : `Εμφανίζονται <strong>${list.length}</strong> από ${d.items.length} ${d.sc.many}, συνολική επιφάνεια <strong>${nf.format(total)}</strong> τ.μ.` + (missing?` <span class="muted">(${missing} χωρίς επιφάνεια)</span>`:"");
+    ? `<strong>${list.length}</strong> ${d.sc.many}`
+    : `Εμφανίζονται <strong>${list.length}</strong> από ${d.items.length} ${d.sc.many}`;
   const note = $("note");
   if(d.updateNote){
     const [first,...rest] = d.updateNote.split("\n");
     note.hidden=false;
     note.innerHTML = `<summary>Τελευταία ενημέρωση φύλλου: ${esc(first)}</summary>${rest.length?`<pre>${esc(rest.join("\n"))}</pre>`:""}`;
   } else note.hidden=true;
-}
-
-function renderMix(){
-  const d=D(), v=V(), c=counts("type"), sel=v.sel.type||new Set();
-  const vals = Object.keys(d.colors);
-  const totalShown = [...c.values()].reduce((a,b)=>a+b,0);
-  const isDim = t => sel.size ? !sel.has(t) : !(c.get(t));
-  const lbl = t => t===EMPTY?EMPTY_LABEL:t;
-  const barW = $("mix").clientWidth || 800;
-  $("mix").innerHTML =
-    `<div class="mix-head"><h2>${esc(d.sc.mixTitle)}</h2><span class="muted">Πατήστε έναν τύπο για φιλτράρισμα</span></div>
-     <div class="bar">${totalShown ? vals.filter(t=>c.get(t)).map(t=>
-       `<button class="seg ${isDim(t)?"dim":""}" style="--n:${c.get(t)};--c:${d.colors[t]}" data-type="${esc(t)}" title="${esc(lbl(t))}: ${c.get(t)}" aria-label="${esc(lbl(t))}, ${c.get(t)}" tabindex="-1">${c.get(t)/totalShown*barW > lbl(t).length*8+20?esc(lbl(t)):""}</button>`).join("") : ""}</div>
-     <ul class="legend">${vals.map(t=>
-       `<li><button style="--c:${d.colors[t]}" data-type="${esc(t)}" aria-pressed="${sel.has(t)}" class="${isDim(t)?"dim":""}"><span class="sw"></span>${esc(lbl(t))} <span class="n">${c.get(t)||0}</span></button></li>`).join("")}</ul>`;
 }
 
 function renderFacetLists(){
@@ -235,8 +224,6 @@ function renderFacetLists(){
     det.querySelector("summary .b").innerHTML = sel.size?`<span class="badge">${sel.size}</span>`:"";
     if(focused!=null){ const el=[...det.querySelectorAll("input")].find(i=>i.value===focused); if(el) el.focus(); }
   });
-  const areaOn = v.anull || v.amin!=="" || v.amax!=="";
-  $("areaFacet").classList.toggle("active", areaOn);
 }
 
 function renderChips(){
@@ -244,8 +231,6 @@ function renderChips(){
   const label = k => (d.facets.find(f=>f[0]===k)||[k,k])[1];
   for(const [k,set] of Object.entries(v.sel)) for(const x of set)
     chips.push(`<button class="chip" data-chip="${k}" data-val="${esc(x)}">${esc(label(k))}: ${esc(x===EMPTY?EMPTY_LABEL:x)}<span class="x" aria-hidden="true">×</span><span class="sr">Αφαίρεση</span></button>`);
-  if(v.anull) chips.push(`<button class="chip" data-chip="area">Χωρίς επιφάνεια<span class="x">×</span></button>`);
-  else if(v.amin!==""||v.amax!=="") chips.push(`<button class="chip" data-chip="area">Επιφάνεια ${v.amin!==""?"από "+nf.format(v.amin):""} ${v.amax!==""?"έως "+nf.format(v.amax):""} τ.μ.<span class="x">×</span></button>`);
   if(v.q) chips.push(`<button class="chip" data-chip="q">Αναζήτηση: «${esc(v.q)}»<span class="x">×</span></button>`);
   if(chips.length>1) chips.push(`<button class="btn link" data-chip="all">Καθαρισμός όλων</button>`);
   $("chips").innerHTML = chips.join("");
@@ -287,31 +272,30 @@ function renderBody(list){
   $("tbody").innerHTML = list.map(it=>{
     const open = v.open.has(it.id);
     const st = it.status==="Σε λειτουργία" ? "ok" : it.status==="Μελλοντικό" ? "future" : "";
-    // if (st == 'ok') {
-      const row = `<tr class="row ${open?"open":""}" data-id="${it.id}">
-        <td class="code">${txt(it.code)}</td>
-        <td class="name"><button class="nm" aria-expanded="${open}">${txt(it.name)}</button></td>
-        <td data-label="${esc(tl)}">${it.type?`<span class="tag" style="--c:${d.colors[it.type]}">${esc(it.type)}</span>`:blank}</td>
-        <td data-label="Τοποθεσία"><span>${txt(it.address)}<span class="second">${esc([it.tk,it.city].filter(Boolean).join(" "))||""}</span></span></td>
-        <td class="map" data-label="Χάρτης">${mapLink(it)}</td>
-        <td data-label="Γεωγρ. περιφέρεια">${txt(it.geo)}</td>
-        <td data-label="Δίκτυο"><span>${txt(it.network)}${it.region?`<span class="second">${esc(it.region)}</span>`:""}</span></td>
-        <td data-label="Κατάσταση">${it.status?`<span class="status ${st}">${esc(it.status)}</span>`:blank}</td>
-        <td class="num" data-label="Επιφάνεια">${it.area!=null?nf.format(it.area):blank}</td>
-        <td class="chev muted" aria-hidden="true">${open?"▾":"▸"}</td>
-      </tr>`;
-      if(!open) return row;
-      const items = [
-        ["Περιγραφή ακινήτου", txt(it.desc)],
-        ["Email", it.emails.length ? it.emails.map(e=>`<a href="mailto:${esc(e)}">${esc(e)}</a>`).join("<br>") : blank],
-        ["Διεύθυνση", txt([it.address,[it.tk,it.city].filter(Boolean).join(" ")].filter(Boolean).join(", "))],
-        ["Επιφάνεια όπως καταχωρήθηκε", txt(it.areaRaw)]
-      ];
-      if(d.has("region")) items.push(["Περιφέρεια", txt(it.region)]);
-      if(d.has("loctype")) items.push(["Τύπος τοποθεσίας", txt(it.loctype)]);
-    // }
+    const row = `<tr class="row ${open?"open":""}" data-id="${it.id}">
+      <td class="code">${txt(it.code)}</td>
+      <td class="name"><button class="nm" aria-expanded="${open}">${txt(it.name)}</button></td>
+      <td data-label="${esc(tl)}">${it.type?`<span class="tag" style="--c:${d.colors[it.type]}">${esc(it.type)}</span>`:blank}</td>
+      <td data-label="Τοποθεσία"><span>${txt(it.address)}<span class="second">${esc([it.tk,it.city].filter(Boolean).join(" "))||""}</span></span></td>
+      <td class="map" data-label="Χάρτης">${mapLink(it)}</td>
+      <td data-label="Γεωγρ. περιφέρεια">${txt(it.geo)}</td>
+      <td data-label="Δίκτυο"><span>${txt(it.network)}${it.region?`<span class="second">${esc(it.region)}</span>`:""}</span></td>
+      <td data-label="Κατάσταση">${it.status?`<span class="status ${st}">${esc(it.status)}</span>`:blank}</td>
+      <td data-label="Ιδιοκτησία">${txt(it.owner)}</td>
+      <td class="num" data-label="Επιφάνεια">${it.area!=null?nf.format(it.area):blank}</td>
+      <td class="chev muted" aria-hidden="true">${open?"▾":"▸"}</td>
+    </tr>`;
+    if(!open) return row;
+    const items = [
+      ["Περιγραφή ακινήτου", txt(it.desc)],
+      ["Email", it.emails.length ? it.emails.map(e=>`<a href="mailto:${esc(e)}">${esc(e)}</a>`).join("<br>") : blank],
+      ["Διεύθυνση", txt([it.address,[it.tk,it.city].filter(Boolean).join(" ")].filter(Boolean).join(", "))],
+      ["Επιφάνεια όπως καταχωρήθηκε", txt(it.areaRaw)]
+    ];
+    if(d.has("region")) items.push(["Περιφέρεια", txt(it.region)]);
+    if(d.has("loctype")) items.push(["Τύπος τοποθεσίας", txt(it.loctype)]);
     return row + `<tr class="detail"><td colspan="${COLUMNS.length+1}"><dl class="dgrid">${items.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join("")}</dl></td></tr>`;
-      }).join("");
+  }).join("");
 }
 
 /* ---------- events ---------- */
@@ -324,8 +308,6 @@ document.addEventListener("click", e=>{
   const tab = e.target.closest("[data-tab]");
   if(tab){ state.tab=tab.dataset.tab; renderAll(); return; }
 
-  const ty = e.target.closest("[data-type]");
-  if(ty){ toggle("type", ty.dataset.type); return; }
 
   const so = e.target.closest("[data-sort]");
   if(so){ const v=V(), k=so.dataset.sort;
@@ -337,9 +319,8 @@ document.addEventListener("click", e=>{
 
   const ch = e.target.closest("[data-chip]");
   if(ch){ const v=V(), k=ch.dataset.chip;
-    if(k==="all"){ v.sel={}; v.q=""; v.amin=""; v.amax=""; v.anull=false; syncInputs(); }
+    if(k==="all"){ v.sel={}; v.q=""; syncInputs(); }
     else if(k==="q"){ v.q=""; syncInputs(); }
-    else if(k==="area"){ v.amin=""; v.amax=""; v.anull=false; syncInputs(); }
     else { const s=v.sel[k]; s && s.delete(ch.dataset.val); }
     render(); return; }
 
@@ -363,28 +344,26 @@ document.addEventListener("keydown", e=>{
   if(e.key==="Escape") document.querySelectorAll("details.facet[open]").forEach(d=>{d.open=false; d.querySelector("summary").focus();});
 });
 let qt; $("q").addEventListener("input", e=>{ clearTimeout(qt); qt=setTimeout(()=>{ if(!D()) return; V().q=e.target.value.trim(); render(); },120); });
-["amin","amax"].forEach(id=>$(id).addEventListener("input", e=>{ if(!D()) return; V()[id]=e.target.value; if(e.target.value) { V().anull=false; $("anull").checked=false; } render(); }));
-$("anull").addEventListener("change", e=>{ if(!D()) return; const v=V(); v.anull=e.target.checked; if(v.anull){v.amin="";v.amax="";syncInputs();} render(); });
 $("sortsel").addEventListener("change", e=>{ if(!D()) return; const [k,d]=e.target.value.split(":"); V().sort={key:k,dir:+d}; render(); });
 
 /* ---------- loading a new JSON ---------- */
 function banner(msg, err){
   $("banner").innerHTML = `<div class="banner ${err?"err":""}" role="status"><span>${msg}</span><button class="btn link" type="button" onclick="this.closest('.banner').remove()">Απόκρυψη</button></div>`;
 }
-// function readFile(f){
-//   if(!f) return;
-//   const r=new FileReader();
-//   r.onload=()=>{
-//     try{
-//       load(JSON.parse(r.result), "Δεδομένα από το αρχείο " + f.name, true);
-//       const d=state.data;
-//       banner(`Φορτώθηκε το ${esc(f.name)}: ${d.stores?d.stores.items.length+" καταστήματα":""}${d.stores&&d.facilities?" και ":""}${d.facilities?d.facilities.items.length+" εγκαταστάσεις":""}. Με «Ανανέωση» επιστρέφετε στα δεδομένα του API.`);
-//     }catch(err){ banner(`Δεν φορτώθηκε το ${esc(f.name)}. ${esc(err.message||"Μη έγκυρο JSON.")}`, true); }
-//   };
-//   r.onerror=()=>banner(`Δεν διαβάστηκε το ${esc(f.name)}.`, true);
-//   r.readAsText(f,"utf-8");
-// }
-// $("file").addEventListener("change", e=>{ readFile(e.target.files[0]); e.target.value=""; });
+function readFile(f){
+  if(!f) return;
+  const r=new FileReader();
+  r.onload=()=>{
+    try{
+      load(JSON.parse(r.result), "Δεδομένα από το αρχείο " + f.name, true);
+      const d=state.data;
+      banner(`Φορτώθηκε το ${esc(f.name)}: ${d.stores?d.stores.items.length+" καταστήματα":""}${d.stores&&d.facilities?" και ":""}${d.facilities?d.facilities.items.length+" εγκαταστάσεις":""}. Με «Ανανέωση» επιστρέφετε στα δεδομένα του API.`);
+    }catch(err){ banner(`Δεν φορτώθηκε το ${esc(f.name)}. ${esc(err.message||"Μη έγκυρο JSON.")}`, true); }
+  };
+  r.onerror=()=>banner(`Δεν διαβάστηκε το ${esc(f.name)}.`, true);
+  r.readAsText(f,"utf-8");
+}
+$("file").addEventListener("change", e=>{ readFile(e.target.files[0]); e.target.value=""; });
 let dragDepth=0;
 window.addEventListener("dragenter", e=>{ if([...(e.dataTransfer?.types||[])].includes("Files")){ dragDepth++; $("drop").classList.add("on"); } });
 window.addEventListener("dragleave", ()=>{ if(--dragDepth<=0){ dragDepth=0; $("drop").classList.remove("on"); } });
@@ -402,14 +381,22 @@ window.addEventListener("drop", e=>{ e.preventDefault(); dragDepth=0; $("drop").
    3) Αν δεν επιτρέπεται κανένα από τα δύο, εμφανίζουμε επιλογές αντιγραφής. */
 const inFrame = (()=>{ try{ return window.self !== window.top; }catch(_){ return true; } })();
 const SB = window["plugins-client-sdk"] || null;
-let staffbaseConnected = false, staffbaseNative = false;
+const PAGE_VERSION = "2026-11-23";
+const isMobileDevice = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1);
+let staffbaseConnected = false, staffbaseNative = false, staffbasePlatform = null;
+const diagLog = [];
+function diag(msg){ diagLog.push(new Date().toLocaleTimeString("el-GR",{hourCycle:"h23"})+"  "+msg); if(diagLog.length>20) diagLog.shift(); renderDiag(); }
 if(inFrame && SB){
   // Η Staffbase απαντά στο HELLO του SDK με SUCCESS. Το παρακολουθούμε για να ξέρουμε ότι η σύνδεση είναι πραγματική.
   window.addEventListener("message", e=>{
     if(e.source!==window.parent || !Array.isArray(e.data) || e.data[0]!=="SUCCESS") return;
     staffbaseConnected = true;
     const payload = e.data[2];
-    if(payload && typeof payload==="object" && payload.platform) staffbaseNative = !!payload.platform.native;
+    if(payload && typeof payload==="object" && payload.platform){
+      staffbasePlatform = payload.platform;
+      staffbaseNative = !!payload.platform.native;
+    }
+    renderDiag();
   });
   try{ SB.isNativeApp().catch(()=>{}); }catch(_){}  // ξεκινά τη σύνδεση από τη φόρτωση, όχι στο πρώτο κλικ
 }
@@ -421,18 +408,49 @@ function openInNewWindow(url){
 }
 document.addEventListener("click", e=>{
   const a = e.target.closest("a.maplink");
-  if(!a || !inFrame) return;
+  if(!a) return;
+  if(!inFrame){ diag("Κλικ χάρτη: όχι σε iframe, κανονικός σύνδεσμος (target=_blank)"); return; }
   if(e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
   e.preventDefault(); e.stopPropagation();
   const url = a.href, addr = a.dataset.addr || "";
-  if(staffbaseConnected && staffbaseNative){
+  // Το SDK μόνο σε native εφαρμογή ΚΑΙ σε κινητή συσκευή. Σε οτιδήποτε άλλο το openLinkExternal
+  // μπορεί να φορτώσει τον σύνδεσμο μέσα στο πλαίσιο, όπου το Google τον μπλοκάρει.
+  if(staffbaseConnected && staffbaseNative && isMobileDevice){
+    diag("Κλικ χάρτη: Staffbase SDK openLinkExternal");
     SB.openLinkExternal(url)
-      .then(ok=>{ if(ok===false) showMapFallback(url, addr); })
-      .catch(()=>{ if(!openInNewWindow(url)) showMapFallback(url, addr); });
+      .then(ok=>{ diag("SDK απάντησε: "+ok); if(ok===false) showMapFallback(url, addr); })
+      .catch(err=>{ diag("SDK σφάλμα: "+(err&&err.message||err)); if(!openInNewWindow(url)) showMapFallback(url, addr); });
     return;
   }
-  if(!openInNewWindow(url)) showMapFallback(url, addr);
+  const ok = openInNewWindow(url);
+  diag("Κλικ χάρτη: window.open → " + (ok ? "άνοιξε νέο παράθυρο" : "μπλοκαρίστηκε, εμφάνιση παραθύρου αντιγραφής"));
+  if(!ok) showMapFallback(url, addr);
 }, true);
+function renderDiag(){
+  const el = document.getElementById("diag"); if(!el || el.hidden) return;
+  const rows = [
+    ["Έκδοση σελίδας", PAGE_VERSION],
+    ["Σε iframe", inFrame],
+    ["Staffbase SDK φορτωμένο", !!SB],
+    ["Σύνδεση με Staffbase", staffbaseConnected],
+    ["Staffbase platform", staffbasePlatform ? JSON.stringify(staffbasePlatform) : "—"],
+    ["Κινητή συσκευή", isMobileDevice],
+    ["User agent", navigator.userAgent]
+  ];
+  el.querySelector("dl").innerHTML = rows.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(String(v))}</dd>`).join("");
+  el.querySelector("pre").textContent = diagLog.join("\n") || "Πατήστε ένα εικονίδιο χάρτη για να καταγραφεί τι συμβαίνει.";
+}
+function toggleDiag(){ const el=$("diag"); el.hidden=!el.hidden; renderDiag(); }
+// document.querySelector("h1").addEventListener("click", e=>{ if(e.detail===3) toggleDiag(); });
+if(/[?&]debug=1\b/.test(location.search)) toggleDiag();
+$("diag").addEventListener("click", async e=>{
+  if(e.target.closest("[data-diag-close]")) toggleDiag();
+  if(e.target.closest("[data-diag-copy]")){
+    const text = [...$("diag").querySelectorAll("dt")].map(dt=>dt.textContent+": "+dt.nextElementSibling.textContent).join("\n")+"\n\n"+diagLog.join("\n");
+    const ok = await copyText(text);
+    e.target.closest("[data-diag-copy]").textContent = ok ? "Αντιγράφηκε" : "Επιλέξτε και αντιγράψτε χειροκίνητα";
+  }
+});
 function showMapFallback(url, addr){
   const d = $("mapdlg");
   $("mapdlg-addr").textContent = addr;
@@ -445,7 +463,7 @@ async function copyText(s){
   try{ await navigator.clipboard.writeText(s); return true; }
   catch(_){
     const ta=document.createElement("textarea"); ta.value=s; ta.style.position="fixed"; ta.style.opacity="0";
-    $("mapdlg").appendChild(ta); ta.select();
+    (document.querySelector("dialog[open]")||document.body).appendChild(ta); ta.select();
     let ok=false; try{ ok=document.execCommand("copy"); }catch(_){}
     ta.remove(); return ok;
   }
@@ -461,7 +479,6 @@ $("mapdlg").addEventListener("click", async e=>{
 });
 $("mapdlg-url").addEventListener("focus", e=>e.target.select());
 
-let rt; window.addEventListener("resize",()=>{ clearTimeout(rt); rt=setTimeout(()=>{ if(D()) renderMix(); },150); });
 const timeFmt = new Intl.DateTimeFormat("el-GR",{hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"});
 let inFlight = null;
 async function loadFromApi(){
@@ -476,8 +493,7 @@ async function loadFromApi(){
     let json;
     try{ json = await res.json(); }catch(_){ throw new Error("Η απάντηση του API δεν είναι έγκυρο JSON."); }
     if(json && json.success === false) throw new Error("Το API επέστρεψε success: false" + (json.error||json.message ? ` (${json.error||json.message})` : "") + ".");
-    // load(json, `Ενημερώθηκε από το API στις ${timeFmt.format(new Date())}`, true);
-    load(json, ``, true);
+    load(json, `Ενημερώθηκε από το API στις ${timeFmt.format(new Date())}`, true);
     $("banner").innerHTML = "";
   }catch(err){
     if(ctrl.signal.aborted && ctrl.signal.reason !== "timeout" && inFlight !== ctrl) return; // αντικαταστάθηκε από νεότερο αίτημα
@@ -497,11 +513,3 @@ $("refresh").addEventListener("click", loadFromApi);
 document.addEventListener("click", e=>{ if(e.target.closest("[data-retry]")) loadFromApi(); });
 loadFromApi();
 })();
-
-
-// if (window.self === window.top) {
-//   // Η σελίδα άνοιξε απευθείας (εκτός iframe)
-//   document.body.innerHTML = '<h1>403 Forbidden</h1>';
-//   // Προαιρετικά: Ανακατεύθυνση στο Staffbase
-//   // window.location.href = 'https://your-company.staffbase.com';
-// }
